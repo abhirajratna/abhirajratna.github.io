@@ -3,22 +3,430 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My 3D Website</title>
+    <title>Abhiraj Ratna | Personal Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="js/tracking.js" defer></script>
+    <script src="js/text-analyzer.js" defer></script>
 </head>
 <body>
-    <div id="info">
-        <h1>My 3D Website</h1>
-        <p>Welcome to my Three.js 3D website!</p>
-    </div>
-    <div id="container"></div>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="#home">AR</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#achievements" class="nav-link">Achievements</a></li>
+                <li><a href="#text-analyzer" class="nav-link">Text Analyzer</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="glitch" data-text="Abhiraj Ratna">Abhiraj Ratna</h1>
+            <p class="subtitle">B.Tech CSE & MS Computational Linguistics</p>
+            <div class="cta-buttons">
+                <a href="#about" class="btn btn-primary">Know More</a>
+                <a href="files/Abhiraj_Ratna_CV.pdf" class="btn btn-primary" download>
+                    <i class="fas fa-download"></i> Download My CV
+                </a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <!-- Placeholder for your profile image -->
+            <div class="profile-img-placeholder">
+                <img src="images/profile-photo.jpeg" alt="Abhiraj Ratna" class="profile-img">
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="about-intro">
+                        <div class="profile-image">
+                            <img src="images/profile-photo.jpeg" alt="Abhiraj Ratna" class="profile-img">
+                        </div>
+                        <div class="intro-text">
+                            <p class="greeting">Hello, I'm <span class="highlight">Abhiraj Ratna</span></p>
+                            <p class="tagline">Computational Linguist & Computer Science Enthusiast</p>
+                            <p class="description">
+                                I am a first-year student at IIIT-Hyderabad pursuing a dual degree - 
+                                B.Tech in Computer Science and MS by Research in Computational Linguistics. 
+                                My academic journey is driven by a passion for solving complex problems through 
+                                technology, particularly at the intersection of language and computing.
+                            </p>
+                            <p class="description">
+                                Beyond academics, I have a keen interest in quantitative finance and am continuously 
+                                expanding my programming skills. I enjoy exploring the practical applications of 
+                                computational linguistics in creating intelligent language processing systems.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="personal-details">
+                        <h3 class="details-title">Personal Details</h3>
+                        <div class="details-grid">
+                            <div class="detail-item">
+                                <span class="detail-label"><i class="fas fa-user"></i> Name:</span>
+                                <span class="detail-value">Abhiraj Ratna</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label"><i class="fas fa-graduation-cap"></i> Degree:</span>
+                                <span class="detail-value">B.Tech + MS by Research</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label"><i class="fas fa-code"></i> Major:</span>
+                                <span class="detail-value">CS & Computational Linguistics</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label"><i class="fas fa-university"></i> University:</span>
+                                <span class="detail-value">IIIT-Hyderabad</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label"><i class="fas fa-calendar-alt"></i> Year:</span>
+                                <span class="detail-value">First Year</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label"><i class="fas fa-chart-line"></i> Interest:</span>
+                                <span class="detail-value">Quantitative Finance</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="birthplace-gallery">
+                    <h3>My Birthplace</h3>
+                    <div class="gallery-container">
+                        <div class="gallery-main">
+                            <img src="images/birthplace-1.jpg" alt="Birthplace Image" id="gallery-featured" class="featured-img">
+                        </div>
+                        <div class="gallery-grid">
+                            <div class="gallery-item" onclick="changeImage('images/birthplace-1.jpg')">
+                                <img src="images/birthplace-1.jpg" alt="Birthplace Image 1">
+                            </div>
+                            <div class="gallery-item" onclick="changeImage('images/birthplace-2.jpg')">
+                                <img src="images/birthplace-2.jpg" alt="Birthplace Image 2">
+                            </div>
+                            <div class="gallery-item" onclick="changeImage('images/birthplace-3.jpg')">
+                                <img src="images/birthplace-3.jpg" alt="Birthplace Image 3">
+                            </div>
+                            <div class="gallery-item" onclick="changeImage('images/birthplace-4.jpg')">
+                                <img src="images/birthplace-4.jpeg" alt="Birthplace Image 4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="section">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>IIIT-Hyderabad</h3>
+                        <span class="timeline-period">2024 - Present</span>
+                        <div class="timeline-info">
+                            <p class="timeline-degree">B.Tech in Computer Science and MS by Research in Computational Linguistics</p>
+                            <p class="timeline-description">
+                                Currently pursuing this integrated dual degree program with a focus on the computational aspects
+                                of language processing and understanding.
+                            </p>
+                            <div class="timeline-achievements">
+                                <h4>Entrance Achievements:</h4>
+                                <ul>
+                                    <li>UGEE Rank: 109</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>DPS RK Puram</h3>
+                        <span class="timeline-period">Higher Secondary Education</span>
+                        <div class="timeline-info">
+                            <p class="timeline-degree">Class XII</p>
+                            <p class="timeline-result">Achieved 92.2% in higher secondary education</p>
+                            <div class="timeline-achievements">
+                                <h4>Entrance Exam Results:</h4>
+                                <ul>
+                                    <li>JEE Mains Rank: 4328 (99.73 percentile)</li>
+                                    <li>JEE Advanced Rank: 7633</li>
+                                    <li>ISI Entrance Exam Rank: 45</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>DPS RK Puram</h3>
+                        <span class="timeline-period">Secondary Education</span>
+                        <div class="timeline-info">
+                            <p class="timeline-degree">Class X</p>
+                            <p class="timeline-result">Achieved 97% in secondary education</p>
+                            <div class="timeline-achievements">
+                                <h4>Achievements:</h4>
+                                <ul>
+                                    <li>MVPP(JSTSE) Qualifier</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skills-category">
+                    <h3 class="category-title">Programming Languages</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <div class="skill-icon"><i class="fas fa-code"></i></div>
+                                <div class="skill-name">C/C++</div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level advanced" data-level="Advanced">
+                                    <span class="skill-percent">90%</span>
+                                </div>
+                            </div>
+                            <p class="skill-description">1 year experience, most proficient language</p>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <div class="skill-icon"><i class="fab fa-python"></i></div>
+                                <div class="skill-name">Python</div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level intermediate" data-level="Intermediate">
+                                    <span class="skill-percent">70%</span>
+                                </div>
+                            </div>
+                            <p class="skill-description">Average proficiency, 1 year experience</p>
+                        </div>
+                    </div>
+                </div>
     
-    <!-- Three.js library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+                <div class="skills-category">
+                    <h3 class="category-title">Web Development</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <div class="skill-icon"><i class="fab fa-html5"></i></div>
+                                <div class="skill-name">HTML/CSS</div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level beginner" data-level="Beginner">
+                                    <span class="skill-percent">40%</span>
+                                </div>
+                            </div>
+                            <p class="skill-description">Beginner level proficiency</p>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <div class="skill-icon"><i class="fab fa-js"></i></div>
+                                <div class="skill-name">JavaScript</div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level beginner" data-level="Beginner">
+                                    <span class="skill-percent">40%</span>
+                                </div>
+                            </div>
+                            <p class="skill-description">Beginner level proficiency</p>
+                        </div>
+                    </div>
+                </div>
     
-    <!-- Your custom JS -->
+                <div class="skills-category">
+                    <h3 class="category-title">Areas of Interest</h3>
+                    <div class="interest-tags">
+                        <span class="interest-tag">Computational Linguistics</span>
+                        <span class="interest-tag">NLP</span>
+                        <span class="interest-tag">Machine Learning</span>
+                        <span class="interest-tag">Quantitative Finance</span>
+                        <span class="interest-tag">Algorithm Design</span>
+                        <span class="interest-tag">Data Structures</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="section">
+        <div class="container">
+            <h2 class="section-title">Achievements</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon"><i class="fas fa-medal"></i></div>
+                    <h3>JEE Mains</h3>
+                    <p>Rank 4328 (99.73 percentile)</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon"><i class="fas fa-award"></i></div>
+                    <h3>JEE Advanced</h3>
+                    <p>Rank 7633</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon"><i class="fas fa-trophy"></i></div>
+                    <h3>ISI Entrance Exam</h3>
+                    <p>Rank 45</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon"><i class="fas fa-star"></i></div>
+                    <h3>UGEE</h3>
+                    <p>Rank 109</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon"><i class="fas fa-certificate"></i></div>
+                    <h3>MVPP(JSTSE)</h3>
+                    <p>Qualified</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Text Analyzer section-->
+    <section id="text-analyzer" class="section">
+        <div class="container">
+            <h2 class="section-title">Text Analysis Tool</h2>
+            <div class="analyzer-container">
+                <p class="analyzer-description">
+                    Enter or paste a text with at least 10,000 words below for detailed analysis.
+                    The tool will analyze letters, words, spaces, newlines, special symbols, pronouns, prepositions, and indefinite articles.
+                </p>
+                
+                <div class="input-container">
+                    <textarea id="text-input" placeholder="Enter or paste your text here (minimum 10,000 words)..." 
+                              aria-label="Text input for analysis"></textarea>
+                    <div class="word-counter">
+                        <span id="word-count">0</span> words
+                    </div>
+                </div>
+                
+                <div class="button-container">
+                    <button id="analyze-btn" class="btn btn-primary">Analyze Text</button>
+                    <button id="clear-btn" class="btn btn-secondary">Clear Text</button>
+                    <button id="sample-text-btn" class="btn">Load Sample Text</button>
+                </div>
+                
+                <div class="results-container" id="analysis-results">
+                    <h3>Analysis Results</h3>
+                    
+                    <!-- Basic Statistics -->
+                    <div class="results-section">
+                        <h4>Basic Statistics</h4>
+                        <div class="results-grid">
+                            <div class="result-card">
+                                <div class="result-icon"><i class="fas fa-font"></i></div>
+                                <div class="result-title">Letters</div>
+                                <div class="result-value" id="letter-count">0</div>
+                            </div>
+                            <div class="result-card">
+                                <div class="result-icon"><i class="fas fa-align-left"></i></div>
+                                <div class="result-title">Words</div>
+                                <div class="result-value" id="word-result">0</div>
+                            </div>
+                            <div class="result-card">
+                                <div class="result-icon"><i class="fas fa-grip-lines"></i></div>
+                                <div class="result-title">Spaces</div>
+                                <div class="result-value" id="space-count">0</div>
+                            </div>
+                            <div class="result-card">
+                                <div class="result-icon"><i class="fas fa-level-down-alt"></i></div>
+                                <div class="result-title">Newlines</div>
+                                <div class="result-value" id="newline-count">0</div>
+                            </div>
+                            <div class="result-card">
+                                <div class="result-icon"><i class="fas fa-asterisk"></i></div>
+                                <div class="result-title">Special Symbols</div>
+                                <div class="result-value" id="special-symbol-count">0</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Linguistic Analysis -->
+                    <div class="linguistic-analysis">
+                        <h4>Linguistic Analysis</h4>
+                        
+                        <div class="tabs">
+                            <button class="tab-button active" data-tab="pronouns">Pronouns</button>
+                            <button class="tab-button" data-tab="prepositions">Prepositions</button>
+                            <button class="tab-button" data-tab="articles">Indefinite Articles</button>
+                        </div>
+                        
+                        <div class="tab-content">
+                            <div id="pronouns" class="tab-pane active">
+                                <div id="pronouns-results" class="token-results">
+                                    <!-- Pronouns results will go here -->
+                                </div>
+                            </div>
+                            
+                            <div id="prepositions" class="tab-pane">
+                                <div id="prepositions-results" class="token-results">
+                                    <!-- Prepositions results will go here -->
+                                </div>
+                            </div>
+                            
+                            <div id="articles" class="tab-pane">
+                                <div id="articles-results" class="token-results">
+                                    <!-- Articles results will go here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Abhiraj Ratna. All Rights Reserved.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script src="js/main.js"></script>
+    <script src="js/event-tracker.js" defer></script>    
+    <script src="js/tabs.js"></script>   
 </body>
 </html>

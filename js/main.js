@@ -1,62 +1,193 @@
-// Initialize Three.js scene
-let scene, camera, renderer;
-let cube;
-let controls;
-
-function init() {
-    // Create scene
-    scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x1a1a2e);
+document.addEventListener('DOMContentLoaded', function() {
+    // Navigation menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
     
-    // Set up camera
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 5;
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function() {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    }
     
-    // Set up renderer
-    renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.getElementById('container').appendChild(renderer.domElement);
-    
-    // Add lighting
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-    scene.add(ambientLight);
-    
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-    directionalLight.position.set(1, 1, 1);
-    scene.add(directionalLight);
-    
-    // Create a simple cube
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshPhongMaterial({ 
-        color: 0x00aaff,
-        specular: 0x555555,
-        shininess: 30 
+    // Close menu when clicking a nav link (mobile)
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (menuToggle && navMenu) {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
     });
-    cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
     
-    // Add window resize handler
-    window.addEventListener('resize', onWindowResize);
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
     
-    // Animation loop
-    animate();
+    // Fix for the TypeError: Check if navbar exists before accessing its properties
+    function scrollHeader() {
+        // Only proceed if navbar element exists
+        if (navbar) {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+    }
+    
+    // Add the scroll event listener only if the navbar element exists
+    if (navbar) {
+        window.addEventListener('scroll', scrollHeader);
+    }
+    
+    // Glitch effect for hero heading
+    const glitchElement = document.querySelector('.glitch');
+    if (glitchElement) {
+        setInterval(() => {
+            glitchElement.style.animation = 'none';
+            void glitchElement.offsetWidth; // Trigger reflow
+            glitchElement.style.animation = null;
+        }, 5000);
+    }
+    
+    // Smooth appearing of skill bars on scroll
+    const skillLevels = document.querySelectorAll('.skill-level');
+    if (skillLevels.length > 0) {
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.width = entry.target.dataset.level === 'Advanced' ? '90%' : 
+                                              entry.target.dataset.level === 'Intermediate' ? '70%' : '40%';
+                    skillObserver.unobserve(entry.target);
+                } else {
+                    entry.target.style.width = '0';
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        skillLevels.forEach(skill => {
+            skill.style.width = '0';
+            skillObserver.observe(skill);
+        });
+    }
+    
+    // CV Download functionality
+    const cvDownloadBtn = document.getElementById('cv-download');
+    if (cvDownloadBtn) {
+        cvDownloadBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Here you would normally link to your actual CV file
+            alert('CV download functionality will be implemented once the actual CV file is uploaded.');
+            
+            // For actual implementation:
+            // window.location.href = "path/to/your/cv.pdf";
+        });
+    }
+});
+
+// Function to change the featured image in the gallery
+function changeImage(src) {
+    const featuredImage = document.getElementById('gallery-featured');
+    
+    // Add fade-out effect
+    featuredImage.classList.add('fade-out');
+    
+    // Wait for fade-out animation to complete
+    setTimeout(() => {
+        // Change the image source
+        featuredImage.src = src;
+        
+        // Remove fade-out and add fade-in effect
+        featuredImage.classList.remove('fade-out');
+        featuredImage.classList.add('fade-in');
+        
+        // Remove fade-in class after animation completes
+        setTimeout(() => {
+            featuredImage.classList.remove('fade-in');
+        }, 500);
+    }, 300);
 }
 
-function animate() {
-    requestAnimationFrame(animate);
+// Add animation styles to the stylesheet
+document.addEventListener('DOMContentLoaded', function() {
+    // Create a style element
+    const style = document.createElement('style');
     
-    // Rotate the cube
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
+    // Add the CSS animations
+    style.textContent = `
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s forwards;
+        }
+        
+        .fade-out {
+            animation: fadeOut 0.3s forwards;
+        }
+    `;
     
-    renderer.render(scene, camera);
-}
+    // Append the style to the document head
+    document.head.appendChild(style);
+    
+    // Initialize image gallery if it exists
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    if (galleryItems.length > 0) {
+        // Set the first image as active
+        galleryItems[0].classList.add('active');
+    }
+});
 
-function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-}
-
-// Initialize the scene when the window loads
-window.onload = init;
+// Event tracking functionality as required in the assignment (Q2)
+document.addEventListener('DOMContentLoaded', function() {
+    // Function to log events with timestamp, event type, and object information
+    function logEvent(eventType, eventObject) {
+        const timestamp = new Date().toISOString();
+        const objectInfo = eventObject.tagName ? 
+            `${eventObject.tagName.toLowerCase()}${eventObject.id ? `#${eventObject.id}` : ''}${eventObject.className ? `.${Array.from(eventObject.classList).join('.')}` : ''}` : 
+            'unknown';
+        
+        console.log(`${timestamp}, ${eventType}, ${objectInfo}`);
+    }
+    
+    // Track clicks on all elements
+    document.addEventListener('click', function(event) {
+        const clickedElement = event.target;
+        logEvent('click', clickedElement);
+    });
+    
+    // Track page views with Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                logEvent('view', entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    // Observe all important elements in the page
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+    
+    // Also observe images, buttons, and other interactive elements
+    const observableElements = document.querySelectorAll('img, button, a, .gallery-item, .achievement-card');
+    observableElements.forEach(element => {
+        observer.observe(element);
+    });
+    
+    // Log initial page load
+    logEvent('view', document.body);
+    
+    console.log('Event tracking initialized. All clicks and views will be logged to the console.');
+});
