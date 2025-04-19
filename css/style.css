@@ -1599,3 +1599,38 @@ h1 {
     font-size: 14px;
     opacity: 0.7;
   }
+
+  :root {
+    /* Dark Theme (Default) */
+    --bg-primary: #202731;
+    --bg-secondary: #171e26;
+    --text-primary: #ffffff;
+    --text-secondary: #b8b8b8;
+    --accent: #00c3ff;
+    --card-bg: #232c38;
+    --border: #2d3748;
+    --shadow: rgba(0, 0, 0, 0.3);
+    
+    /* Theme Transition */
+    --transition-speed: 0.3s;
+  }
+  
+  /* Light Theme */
+  [data-theme="light"] {
+    --bg-primary: #f7f9fc;
+    --bg-secondary: #ffffff;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --accent: #4d9de0;
+    --card-bg: #ffffff;
+    --border: #e6e9ef;
+    --shadow: rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Apply transition to all elements for smooth theme switching */
+  * {
+    transition: background-color var(--transition-speed) ease, 
+                color var(--transition-speed) ease,
+                border-color var(--transition-speed) ease,
+                box-shadow var(--transition-speed) ease;
+  }
